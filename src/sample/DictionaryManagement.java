@@ -12,7 +12,7 @@ public class DictionaryManagement {
 
     public void insertFromFile(Dictionary dictionary1) throws IOException { //Load các cặp từ từ file .txt vào mảng các Word
 
-        File filename = new File("D:/java/Dictionary_v2/src/sample/dictionaries.txt");
+        File filename = new File("D:\\1.Subjects\\OOP\\OOP_N1_BTL_N9\\soucre_code\\Dictionary_v2\\src\\sample\\dictionaries_test.txt");
         Scanner sc = new Scanner(filename);
         while(sc.hasNextLine()){
             String currentLine = sc.nextLine();
@@ -30,8 +30,8 @@ public class DictionaryManagement {
 
     public Word getWord(Dictionary List, String a) {
         Word word = new Word();
-        word.setWord_target("ERROR!!");
-        word.setWord_explain("");
+        word.setWord_target("Ơ!");
+        word.setWord_explain("Lỗi");
         for(int i=0; i<List.arrayOfWord.size();i++){
             if(a.equalsIgnoreCase(List.arrayOfWord.get(i).getWord_target())){
                 return List.arrayOfWord.get(i);
@@ -58,9 +58,7 @@ public class DictionaryManagement {
 
     public void saveFile(Dictionary dictionay1) throws FileNotFoundException, UnsupportedEncodingException {
         try{
-            FileWriter fw = new FileWriter(
-                    "C:\\Users\\Administrator\\Desktop\\HK I-2021\\LTHDT\\Test\\src\\sample\\dictionaries.txt");
-            //writer.print("");
+            FileWriter fw = new FileWriter("D:/1.Subjects/OOP/OOP_N1_BTL_N9/soucre_code/Dictionary_v2/src/sample/dictionaries_test.txt");
             for( int i = 0; i < dictionay1.arrayOfWord.size(); i ++){
                 fw.write(dictionay1.arrayOfWord.get(i).getWord_target() + "\t");
                 fw.write(dictionay1.arrayOfWord.get(i).getWord_explain() + "\n");

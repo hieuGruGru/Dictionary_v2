@@ -3,10 +3,12 @@ package sample;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-
 import javafx.scene.input.MouseEvent;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -17,14 +19,13 @@ public class Controller implements Initializable {
 
     Dictionary dictionary1 = new Dictionary();
     DictionaryManagement dictionaryManagement = new DictionaryManagement();
+    Audio audio1 = new Audio();
     @FXML
     ListView<String> listView = new ListView<>();
     @FXML
     TextField SearchText = new TextField();
     @FXML
     TextField EText = new TextField();
-    @FXML
-    TextField TText = new TextField();
     @FXML
     TextField VText = new TextField();
     @FXML
@@ -39,10 +40,12 @@ public class Controller implements Initializable {
     Button buttonDel;
     @FXML
     Button buttonSave;
-
+    @FXML
+    Button Speech;
+    @FXML
+    Button Reset;
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
+    public void initialize(URL url, ResourceBundle resoucre) {
         try {
             dictionaryManagement.insertFromFile(dictionary1);
         } catch (IOException e) {
@@ -50,10 +53,18 @@ public class Controller implements Initializable {
         }
         for (int i = 0; i < dictionary1.arrayOfWord.size(); i++) {
             listView.getItems().add(dictionary1.arrayOfWord.get(i).getWord_target());
-            listView.getItems().add(dictionary1.arrayOfWord.get(i).getWord_explain());
         }
-
     }
+
+    /*public void changeSource1() {
+        String pathname1 = "D:\\1.Subjects\\OOP\\OOP_N1_BTL_N9\\soucre_code\\Dictionary_v2\\src\\sample\\dictionaries_test.txt";
+        initialize(pathname1);
+    }*/
+
+    /*public void changeSource2() {
+        String pathname2 = "D:\\1.Subjects\\OOP\\OOP_N1_BTL_N9\\soucre_code\\Dictionary_v2\\src\\sample\\dictionaries.txt";
+        initialize(pathname2);
+    }*/
 
     public void autoCompelete(KeyEvent keyEvent) {
         listView.getItems().clear();
@@ -66,16 +77,16 @@ public class Controller implements Initializable {
     }
 
 
-    public void Show_word(MouseEvent event) {
+    public void showWord(MouseEvent event) {
         String s = listView.getSelectionModel().getSelectedItem();
-        Word word_show = dictionaryManagement.getWord(dictionary1,s);
+        Word word_show = dictionaryManagement.getWord(dictionary1, s);
         EText.setText(word_show.getWord_target());
         VText.setText(word_show.getWord_explain());
         StatusText.clear();
     }
 
 
-    public void Look_up(ActionEvent event) {
+    public void lookUp(ActionEvent event) {
         EText.clear();
         VText.clear();
         StatusText.clear();
@@ -88,46 +99,59 @@ public class Controller implements Initializable {
         }
     }
 
-    public void AddWord(ActionEvent event) {
+    public void addWord(ActionEvent event) {
         String word = EText.getText();
         String mean = VText.getText();
         int kt = 0;
         for (int i = 0; i < dictionary1.arrayOfWord.size(); i++) {
             if (word.equalsIgnoreCase(dictionary1.arrayOfWord.get(i).getWord_target())) {
-                kt = 1;
-                mean = dictionary1.arrayOfWord.get(i).getWord_explain() + ", " + mean;
-                dictionaryManagement.modifyWord(dictionary1.arrayOfWord.get(i), word, mean);
+                StatusText.setText("Từ này đã có trong từ điển rồi");
             }
         }
-        StatusText.setText("Your word has been added!");
+        StatusText.setText("Xong, đã thêm từ " + word + " vào từ điển");
         if (kt == 0) dictionaryManagement.insertFromText(dictionary1, word, mean);
         EText.clear();
         VText.clear();
-        StatusText.clear();
         //Show_word();
     }
 
-    public void DelWord() {
+    public void pronounce_E(ActionEvent event) {
+        String textPronounce1 = new String(EText.getText());
+        audio1.Text_Speech(textPronounce1);
+        //EText.clear();
+        //VText.clear();
+    }
+
+    public void reset(ActionEvent event) {
+        audio1 = null;
+    }
+
+    public void deletelWord() {
         String a = listView.getSelectionModel().getSelectedItem();
         listView.getItems().remove(a);
         EText.clear();
         VText.clear();
         StatusText.clear();
-        StatusText.setText("Your word has been deleted!");
+        StatusText.setText("Tôi xóa cái từ đấy đi rồi 🤷‍");
         dictionaryManagement.removeWord(dictionary1, a);
     }
 
-    public void Fix_word(ActionEvent event) {
+    public void updateWord(ActionEvent event) {
         String a = listView.getSelectionModel().getSelectedItem();
         Word word = dictionaryManagement.getWord(dictionary1, a);
-        StatusText.setText("Your word has been fixed!");
+        StatusText.clear();
+        StatusText.setText("Đã chỉnh sửa xong 😃 ");
         dictionaryManagement.modifyWord(dictionaryManagement.getWord(dictionary1, a), EText.getText(), VText.getText());
         EText.clear();
         VText.clear();
         //Show_word();
     }
 
-    public void end_game(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
+    public void saveFile(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
         dictionaryManagement.saveFile(dictionary1);
+        StatusText.clear();
+        StatusText.setText("Đã lưu file 🤦‍");
+
     }
+
 }

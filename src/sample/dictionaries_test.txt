@@ -4,7 +4,7 @@ chapter	chương
 fellow	đồng bào
 divorce	ly hôn
 owe	nợ
-pipe	ống
+pipe	ống, khói
 athletic	Khỏe mạnh
 slight	nhẹ
 math	môn Toán
@@ -1270,7 +1270,7 @@ flexible	linh hoạt
 progressive	cấp tiến
 web	web
 conspiracy	âm mưu
-catch	bắt lấy
+catch	bắt lấy, mèo vằng, vồ
 casualty	tai nạn
 republic	nước cộng hòa
 execution	chấp hành
@@ -1714,7 +1714,7 @@ lid	Nắp
 dumb	ngớ ngẩn
 bulk	số lượng lớn
 sprinkle	rắc
-mortality	tử vong
+mortality	qua đời
 philosophical	triết học
 conversion	chuyển đổi
 patron	người bảo trợ
@@ -2000,3 +2000,5 @@ kid	đứa trẻ
 middle-class	tầng lớp trung lưu
 apology	xin lỗi
 till	cho đến
+coder	kẻ thù của màn đêm
+catW	mèo trắng
