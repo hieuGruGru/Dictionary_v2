@@ -8,7 +8,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -151,7 +150,5 @@ public class Controller implements Initializable {
         dictionaryManagement.saveFile(dictionary1);
         StatusText.clear();
         StatusText.setText("Đã lưu file 🤦‍");
-
     }
-
 }

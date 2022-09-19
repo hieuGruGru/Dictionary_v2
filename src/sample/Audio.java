@@ -4,7 +4,6 @@ import javax.speech.synthesis.Synthesizer;
 import javax.speech.synthesis.SynthesizerModeDesc;
 import java.util.Locale;
 
-
 public class Audio {
     public void Text_Speech(String Text) {
         try {
