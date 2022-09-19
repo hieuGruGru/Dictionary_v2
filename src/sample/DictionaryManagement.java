@@ -12,7 +12,7 @@ public class DictionaryManagement {
 
     public void insertFromFile(Dictionary dictionary1) throws IOException { //Load các cặp từ từ file .txt vào mảng các Word
 
-        File filename = new File("D:\\1.Subjects\\OOP\\OOP_N1_BTL_N9\\soucre_code\\Dictionary_v2\\src\\sample\\dictionaries_test.txt");
+        File filename = new File("src/resource/dictionaries_test.txt");
         Scanner sc = new Scanner(filename);
         while(sc.hasNextLine()){
             String currentLine = sc.nextLine();
