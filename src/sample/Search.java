@@ -13,12 +13,10 @@ public class Search { //Các phương thức tìm kiếm
         }
         return flag;
     }
-    public static int prefixSearch(Dictionary dictionary1, String prefixString) {//So sánh xem prefixString có phải là phần đầu của một từ trong từ điển không
+    public static int prefixSearch(String str, String prefixString) {//So sánh xem prefixString có phải là phần đầu của một từ trong từ điển không
         int flag = -1 ;
-        for (int index = 0; index < dictionary1.arrayOfWord.size(); index ++) {
-            String word_target = dictionary1.arrayOfWord.get(index).getWord_target();
-            flag  = (word_target.toLowerCase().indexOf(prefixString.toLowerCase()));
-        }
+        String word_target = str;
+        flag  = (word_target.toLowerCase().indexOf(prefixString.toLowerCase()));
         return flag;
     }
 }

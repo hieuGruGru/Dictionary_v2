@@ -17,11 +17,8 @@ public class DictionaryManagement {
         while(sc.hasNextLine()){
             String currentLine = sc.nextLine();
             int indexOfTab = currentLine.indexOf("\t");
-            //System.out.println("Vi tri dau tab la : " + indexOfTab);
             String target = currentLine.substring(0, indexOfTab);
-            //System.out.println("Tu dau tien la : " + target);
             String explain = currentLine.substring(indexOfTab + 1, currentLine.length());
-            //System.out.println("Tu thu hai la : " + explain);
             Word newWord = new Word(target, explain);
             dictionary1.arrayOfWord.add(newWord);
         }
@@ -32,7 +29,7 @@ public class DictionaryManagement {
         Word word = new Word();
         word.setWord_target("Ơ!");
         word.setWord_explain("Lỗi");
-        for(int i=0; i<List.arrayOfWord.size();i++){
+        for(int i = 0; i < List.arrayOfWord.size(); i ++){
             if(a.equalsIgnoreCase(List.arrayOfWord.get(i).getWord_target())){
                 return List.arrayOfWord.get(i);
             }
@@ -42,7 +39,7 @@ public class DictionaryManagement {
 
     public int removeWord(Dictionary List, String remove_word) {
 
-        for(int i=0;i<List.arrayOfWord.size();i++){
+        for(int i = 0;i < List.arrayOfWord.size(); i ++){
             if(remove_word.equalsIgnoreCase(List.arrayOfWord.get(i).getWord_target())){
                 List.arrayOfWord.remove(i);
                 return 1;

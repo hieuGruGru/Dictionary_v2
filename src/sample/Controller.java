@@ -69,7 +69,7 @@ public class Controller implements Initializable {
         listView.getItems().clear();
         String s = SearchText.getText();
         for (int i = 0; i < dictionary1.arrayOfWord.size(); i++) {
-            if (Search.prefixSearch(dictionary1, s)  == 0) {
+            if (Search.prefixSearch(dictionary1.arrayOfWord.get(i).getWord_target(), s)  == 0) {
                 listView.getItems().add(dictionary1.arrayOfWord.get(i).getWord_target());
             }
         }
@@ -121,10 +121,6 @@ public class Controller implements Initializable {
         //VText.clear();
     }
 
-    public void reset(ActionEvent event) {
-        audio1 = null;
-    }
-
     public void deletelWord() {
         String a = listView.getSelectionModel().getSelectedItem();
         listView.getItems().remove(a);
@@ -143,7 +139,6 @@ public class Controller implements Initializable {
         dictionaryManagement.modifyWord(dictionaryManagement.getWord(dictionary1, a), EText.getText(), VText.getText());
         EText.clear();
         VText.clear();
-        //Show_word();
     }
 
     public void saveFile(ActionEvent event) throws FileNotFoundException, UnsupportedEncodingException {
@@ -151,4 +146,5 @@ public class Controller implements Initializable {
         StatusText.clear();
         StatusText.setText("Đã lưu file 🤦‍");
     }
+
 }

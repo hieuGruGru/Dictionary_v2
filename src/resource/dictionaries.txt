@@ -32,7 +32,7 @@ carbon	carbon
 closer	gần hơn
 consume	tiêu dùng
 scheme	kế hoạch
-c rack	bẻ khóa
+crack	bẻ khóa
 frequency	tần số
 tobacco	thuốc lá
 survivor	người sống sót
@@ -131,7 +131,7 @@ modest	khiêm tốn
 provider	các nhà cung cấp
 delay	sự chậm trễ
 agricultural	nông nghiệp
-explo de	nổ tung
+explode	nổ tung
 stroke	Cú đánh
 scope	phạm vi
 punishment	hình phạt
